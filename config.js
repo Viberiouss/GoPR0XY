@@ -11,6 +11,8 @@ window._config = {
 		"count-down",
 		"schedule",
 		"tutorial",
-		"wordle"
+		"wordle",
+		"sheltersearch",
+		"undiscord",
 	]
 }

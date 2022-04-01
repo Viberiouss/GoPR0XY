@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google</title>
+    <link rel="icon" href="https://google.com/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+  <!--  <ul>
+  <li class="bn17" onclick="openFullscreen()"><a href="#fullscreen">Open Fullscreen!</a></li>
+  <li class="bn29" onclick="history.back()"><a href="#back">Go back!</a></li>
+  <li class="bn19" onclick="history.forward()"><a href="#forward">Go Forward!</a></li>
+  <li class="bn18" style="float:right"><a class="active" href="/secondary.html">Google (Proxied)</a></li>
+</ul> -->
+  </head>
+  <body>
+    <!--<script src="/script.js"></script>-->
+   	<button class="bn17" onclick="openFullscreen()"> Open Fullscreen! </button> 
+    <button class="bn29" onclick="history.back()"> Go back! </button> 
+	<input class="search" id="search" type="text" placeholder="Enter Search Query Here"></input>
+    <button class="bn19" onclick="history.forward()"> Go Forward! </button> 
+    <a class="bn18" href="secondary.html">Google (Proxied)</a>
+    <iframe seamless class="google" id="google" src=""></iframe>
+	    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Google</title>
+        <link rel="icon" href="https://google.com/favicon.ico">
+    </head>
+    <body>
+        <input id="search" type="text" placeholder="Enter search query here."></input>
+        <iframe id="google" width="100%" height="100%" src=""></iframe>
+        <style>
+            body {
+                background: black;
+                color: white;
+            }
+
+            ::placeholder {
+            color: #ffffff;
+            }
+
+            input {
+                text-align: center;
+                font-size: 16px;
+                outline: none;
+                border-radius: 45px;
+                border: 2px solid white;
+                width: 400px;
+                height: 75px;
+                background: transparent;
+                padding: 5px;
+                color: white;
+            }
+
+            iframe {
+                position: fixed;
+                top: 0; 
+                left: 0; 
+                right: 0; 
+                bottom: 0;
+                border: none;
+                z-index: 10;
+                display: none;
+                background: white;
+            }
+        </style>
+        <script>
+			const search = document.getElementById('search').value;
+			const google = document.getElementById('google');
+           iframe.style.display = "initial";
+            document.addEventListener('keypress', function (e)
+			{
+                if (e.keyCode === 13) 
+				{
+                    iframe.src = `https://www.google.com/search?q=${search}&igu=1`;
+                }
+		
+			});
+        </script>
+    </body>
+</html>

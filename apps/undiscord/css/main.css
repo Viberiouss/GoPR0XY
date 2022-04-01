@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:700"); 
+ 
+ 
+ body {
+	background-color: #342E37;
+	color: #FFEEDB;
+    background-size: cover;
+    font-family: "Open Sans", sans-serif;
+	margin-top: 80px;
+	padding: 30px;
+}
+
+header {
+    background-color: #ADA8B6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+	 height: 80px;
+	display: flex;
+	align-items: center;
+    height: max-content;
+	color: #342E37;
+	box-shadow: 0 0 25px 0 black;
+}
+.nv_lg_cnt{
+	display: flex;
+	align-items: center;
+	margin-bottom: 1em;
+}
+header li {
+    margin: 20px;
+}
+
+header * {
+	display: inline;
+}
+
+h1 {
+	text-align: center;
+}
+.h3 {
+	text-align: center;
+}
+
+.logo {
+    height: 70px;
+	margin-left: 40px;
+}
+/* Thanks to nickymeuleman for this! */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Underline styles - details of technique here: https://nickymeuleman.netlify.app/blog/css-animated-wrapping-underline */
+a {
+  background: 
+    linear-gradient(to right, rgba(100, 200, 200, 1), rgba(100, 200, 200, 1)),
+    linear-gradient(to right, rgba(255, 0, 0, 1), rgba(255, 0, 180, 1), rgba(0, 100, 200, 1));
+  background-size: 100% 0.2em, 0 0.2em;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+a:hover,
+a:focus {
+  background-size: 0 0.2em, 100% 0.2em;
+}
+footer{
+	display: flex;
+	align-self: stretch;
+	border-top: 2px solid #ADA8B6;
+	z-index: 9999;
+}
+footer ul{
+	list-style: none;
+}
+.tp_bnr{
+	padding-top: .3em;
+	padding-bottom: .3em;
+	margin-bottom: .3em;
+	text-align: center;
+	display: block;
+	background-color: rgb(100,100,100);
+}
+
+.google {
+	display: block;
+	width: 70vw;
+    height: 70vh;
+	background-color: black;
+}
