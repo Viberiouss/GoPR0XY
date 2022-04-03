@@ -6,7 +6,7 @@ window.apps["info"]["tile"] = `<div class="box_widget">
 	<div>
 		<ul class="list">
 			<li class="italic">Discord and the browser will close bunker when opening. Will be fixed later.</li>
-			<li><a href="apps/sheltersearch/index.html">BROWSE UNDETECTED</a></li>
+			<li><a href="apps/sheltersearch/folder1/index.html">BROWSE UNDETECTED</a></li>
 			<li><a href="apps/undiscord/index.html">DISCORD UNBLOCKED</a></li>
 			<li><a href="apps/tutorial/tutorial.html">Tutorial On Bunker</a></li>
 			<li><a href="apps/info/settings.html"l>Change Settings</a></li>
