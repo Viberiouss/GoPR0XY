@@ -3,7 +3,10 @@
 - JavaScythe: Main (and not the only) developer
 - Cattn: HTML + CSS + some js (I make the site look good (or bad depending on how you see it))
 ### INSTALLATION
-github releases
+https://github.com/elisha1099/proxies All credit to elisha109 for making this, scroll down to bunker to learn more about installing. (or just download files, and click luancher.html)
+
+### INFO
+Bunker is made by the MSG team (JavaScythe 90%) and some others. This software is open source and able to be copied, we ask that you simple suggest us ideas as it will be easier for you, and will help more people!
 
 ### LICENSE
 
