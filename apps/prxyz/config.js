@@ -1,25 +1,18 @@
 window.apps["prxyz"] = {};
 window.apps["prxyz"]["tile"] = `<div class="box_widget">
 	<div>
-		<h3>Pro&zwj;xies</h3>
+		<h3>URL Iframing</h3>
 	</div>
 	<div>
 		<ul class="list">
-			<li>the long (4 days) awaited feature is here:</li>
-			<li>open node:
-				<select class="btn-inline minize" id="prxyz_select">
-					<option>none</option>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-					<option>6</option>
-					<option>7</option>
-					<option>8</option>
-				</select>
-			</li>
+			<li><input id="pyz_url" placeholder="full url"></li>
+			<li><button class="btn_primary" id="str_pyz">load</button></li>
+			<li>Bunker no longer comes preloaded with pr&zwj;oxy links</li>
 		</ul>
 	</div>
-	<script src="apps/prxyz/tile.js"></script>
+	<script>
+		document.getElementById("str_pyz").addEventListener("click", function(){
+			goInternal("/apps/prxyz/get.html?id="+document.getElementById("pyz_url").value);
+		});
+	</script>
 </div>`;
