@@ -5,8 +5,7 @@ window.apps["prxyz"]["tile"] = `<div class="box_widget">
 	</div>
 	<div>
 		<ul class="list">
-			<li><input id="pyz_url" placeholder="full url"></li>
-			<li><button class="btn_primary" id="str_pyz">load</button></li>
+			<li><input id="pyz_url" placeholder="full url"><button class="btn-inline" id="str_pyz">load</button></li>
 			<li>Bunker no longer comes preloaded with pr&zwj;oxy links</li>
 		</ul>
 	</div>

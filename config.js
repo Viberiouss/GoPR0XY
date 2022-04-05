@@ -1,6 +1,5 @@
 window._config = {
 	"apps": [
-		"yt-cl",
 		"prxyz",
 		"info",
 		"mpviewer",
