@@ -14,7 +14,8 @@
 				background-color: transparent;
 				border: 2px solid red;
 				display: block;
-				margin-bottom: 5px;
+				margin-bottom: 3em;
+				cursor: pointer;
 			}
 			span{
 				font-family: monospace;
@@ -22,14 +23,15 @@
 			select, select *{
 				color: #000 !important;
 			}
+			div{
+				margin-top: 1em;
+			}
 		</style>
 	</head>
 	<body>
 		<pre>Bünker launch page</pre>
 		<pre>This work is licensed under the MIT license<br>Features may be broken or missing<br>Subject to change<br><span id="cload"></span></pre>
-		<div>
-			<button onclick="initB();">Initialize bunker index</button><span id="closew"></span>
-		</div>
+		<pre class="imp">make sure that pop ups are enabled </pre>
 		<pre>select opening provider: </pre><select style="color:black;" id="provi">
 			<option value="https://javascythe.github.io/provider">*.github.io</option>
 			<option value="https://provider.4sure.ml">*.4sure.ml</option>
@@ -38,6 +40,9 @@
 			<option value="http://uv-provider.surge.sh/">*.surge.sh</option>
 			<option value="https://twisty-ruddy-snickerdoodle.glitch.me">*.glitch.me</option>
 		</select>
+		<div>
+			<button onclick="initB();">Initialize bunker index</button><span id="closew"></span>
+		</div>
 		<script>
 			function phase(code){
 				var x = window.open("");
@@ -50,8 +55,11 @@
 					"code": code
 				}, "*");
 			}
+			function kill(){
+				window.location.replace('https://classroom.google.com/u/0/h');
+			}
 			function initB(){
-				document.getElementById("closew").textContent = "Close this page after bunker opens";
+				document.getElementById("closew").innerHTML = "THIS PAGE WILL REDIRECT TO GOOGLE CLASSROOM RIGHT AFTER BUNKER OPENS, SUCCESSFULLY OR NOT<br>Got an error? Make sure you have allowed popup (chrome: to the right of the address bar)";
 				var ir = document.createElement("iframe");
 				ir.setAttribute("src", document.getElementById("provi").value);
 				document.body.appendChild(ir);
@@ -59,7 +67,7 @@
 					//pm(`var x = window.open("");x.document.write(`);
 					var e = (function(){
 						if(window.__files == undefined){
-							document.getElementById("closew").textContent = "Failed to initialize bunker: compiled.js missing";
+							document.getElementById("closew").textContent = "Failed to initialize bunker: compiled.js missing (reload the page and make sure you have extracted bunker-vX-beta.zip first)";
 						} else {
 							var d = window.__files["files"]["/root.html"];
 							return d;
@@ -79,10 +87,12 @@
 					//}"))`;
 					pm(`window.__files=${JSON.stringify(window.__files)}`, "exec");
 					pm(e, "load");
+					setTimeout(kill, 2000);
 				}, 2000);
 			}
 		</script>
 		<script src="compiled.js"></script>
 		<script>document.getElementById("cload").textContent = "compiled.js loaded"</script>
+		<button onclick="kill();">Manually remove this tab from history (without launching bunker)</button>
 	</body>
 </html>

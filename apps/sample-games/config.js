@@ -5,7 +5,8 @@ window.apps["sample-games"]["tile"] = `<div class="box_widget">
 	</div>
 	<div>
 		<ul class="list">
-			<li><a href="javascript:goInternal('/apps/sample-games/games.html')">Open full gane list</a></li>
+			<li><a href="javascript:goInternal('/apps/sample-games/games.html')">Open full game list</a></li>
+			<li>gane*</li>
 		</ul>
 	</div>
 </div>`;

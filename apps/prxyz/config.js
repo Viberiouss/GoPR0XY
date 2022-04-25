@@ -11,7 +11,11 @@ window.apps["prxyz"]["tile"] = `<div class="box_widget">
 	</div>
 	<script>
 		document.getElementById("str_pyz").addEventListener("click", function(){
-			goInternal("/apps/prxyz/get.html?id="+document.getElementById("pyz_url").value);
+			var url = document.getElementById("pyz_url").value;
+			if(!url.startsWith("http://") || !url.startsWith("https://")){
+				url = "https://"+url;
+			}
+			goInternal("/apps/prxyz/get.html?id="+url);
 		});
 	</script>
 </div>`;
