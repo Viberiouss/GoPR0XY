@@ -12,7 +12,7 @@ const io = require('socket.io')(server, {
 		methods: ['GET', 'POST'],
 	},
 });
-const filenames = ['.css', '.gif', '.png', '.jpg', '.txt', '.js', '.md', '.html', '.env', '.svg'];
+const filenames = ['.css', '.gif', '.png', '.jpg', '.txt', '.js', '.md', '.html', '.env', '.svg', '.zip'];
 const ppl = {};
 //const users = [
 //"u": "i10", "p": "408f31d86c6bf4a8aff4ea682ad002278f8cb39dc5f37b53d343e63a61f3cc4f", "b":false /* 'bruh' sha256'd */}
@@ -169,7 +169,7 @@ app.post("/auth/register",(req,res)=>{
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
 	for (let i in filenames) {
-		if(req.path.match(".js")&&req.path.indexOf("compiled.js")==-1){
+		if(0){
 			res.send("<pre>NOOOOOOOOOOOO</pre>");
 			return "";
 		}

@@ -30,18 +30,58 @@
 	</head>
 	<body>
 		<pre style="font-size:2em;">Bünker Download</pre>
+		<select id="verselect">
+			<option value="v6-hotfix">v6-hotfix</option>
+			<option value="v5.1-beta">v5.1-beta</option>
+		</select>
+		<pre id="progress"></pre>
+		<button onclick="noregret();">Install selected bunker version (Choose a empty folder or create one once the folder picker opens)</button>
+		<pre id="ert"></pre>
 		<script>
-			async function saveFile() {
-
-			  // create a new handle
-			  newHandle = await window.showDirectoryPicker()
-				const newFileHandle = await newHandle.getFileHandle('My Notes.txt', { create: true });
-				var write = await newFileHandle.createWritable();
-				var filen = await write.getFile();
-				
-				await write.write("idfk");
-				await write.close();
+			
+			async function noregret(){
+				try{
+				var vn = document.getElementById("verselect").value;
+				document.getElementById("progress").textContent = "getting release info";
+				var d = await fetch(`versions/${vn}/manifest.json`);
+				d = await d.json();
+				document.getElementById("progress").textContent = "getting release files";
+				var compiled = await fetch(`versions/${vn}/${d["paths"]["comp"]}`);
+				compiled = await compiled.text();
+				console.log("compiled done with "+compiled.length);
+				var launcher = await fetch(`versions/${vn}/${d["paths"]["laun"]}`);
+				launcher = await launcher.text();
+				console.log("launcher done with "+launcher.length);
+				document.getElementById("progress").textContent = "generating manifest.json";
+				var manifest = {
+					"title": "bunker-"+vn,
+					"version": vn,
+					"created": (new Date).getTime()
+				}
+				manifest=JSON.stringify(manifest);
+				saveFiles(compiled, launcher, manifest);
+				}catch(e){
+					document.getElementById("ert").innerHTML = `exeception throw, try downloading directly <a href="versions/${vn}/${d["paths"]["zip"]}">here</a>`;
+				}
 			}
+			async function saveFiles(c,l,m){
+				document.getElementById("progress").textContent = "saving files";
+				const d = await window.showDirectoryPicker();
+				const cm = await d.getFileHandle('compiled.js', { create: true });
+				const cmf = await cm.createWritable();
+				await cmf.write(c);
+				await cmf.close();
+				const lm = await d.getFileHandle('launcher.html', { create: true });
+				const lmf = await lm.createWritable();
+				await lmf.write(l);
+				await lmf.close();
+				const mn = await d.getFileHandle('manifest.json', { create: true });
+				const mnf = await mn.createWritable();
+				await mnf.write(m);
+				await mnf.close();
+				document.getElementById("progress").textContent = "saved files";
+			}
+			
 		</script>
 		<button onclick="saveFile();">
 			bruh
