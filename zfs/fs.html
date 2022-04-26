@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Classes</title>
+		<link rel="icon" href="https://ssl.gstatic.com/classroom/favicon.png">
+		<style>
+			body{
+				background-color: #000;
+			}
+			*{
+				color: #fff;
+			}
+			button{
+				background-color: transparent;
+				border: 2px solid red;
+				display: block;
+				margin-bottom: 3em;
+				cursor: pointer;
+			}
+			span{
+				font-family: monospace;
+			}
+			select, select *{
+				color: #000 !important;
+			}
+			div{
+				margin-top: 1em;
+			}
+		</style>
+	</head>
+	<body>
+		<pre style="font-size:2em;">Bünker Download</pre>
+		<script>
+			async function saveFile() {
+
+			  // create a new handle
+			  newHandle = await window.showDirectoryPicker()
+				const newFileHandle = await newHandle.getFileHandle('My Notes.txt', { create: true });
+				var write = await newFileHandle.createWritable();
+				var filen = await write.getFile();
+				
+				await write.write("idfk");
+				await write.close();
+			}
+		</script>
+		<button onclick="saveFile();">
+			bruh
+		</button>
+		<pre id="name"></pre>
+	</body>
+</html>

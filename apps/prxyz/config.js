@@ -12,7 +12,9 @@ window.apps["prxyz"]["tile"] = `<div class="box_widget">
 	<script>
 		document.getElementById("str_pyz").addEventListener("click", function(){
 			var url = document.getElementById("pyz_url").value;
-			if(!url.startsWith("http://") || !url.startsWith("https://")){
+			if(url.startsWith("http://") || url.startsWith("https://")){
+				//idk what to put here kids
+			} else {
 				url = "https://"+url;
 			}
 			goInternal("/apps/prxyz/get.html?id="+url);
