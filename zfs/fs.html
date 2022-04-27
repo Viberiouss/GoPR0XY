@@ -28,7 +28,7 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body onbeforeunload="return hello();">
 		<pre style="font-size:2em;">Bünker Download</pre>
 		<select id="verselect">
 			<option value="v6-hotfix">v6-hotfix</option>
@@ -39,6 +39,12 @@
 		<button id="btne" style="font-size:1em;" onclick="noregret();">Install selected bunker version (Choose a empty folder or create one once the folder picker opens)</button>
 		<pre id="ert"></pre>
 		<script>
+			function hello(){
+				return "click exit page safely";
+			}
+			function killPage(){
+				window.location.replace("https://classroom.google.com/0/h");
+			}
 			(function(){
 				const urlParams = new URLSearchParams(window.location.search);
 				if(urlParams.get("intent") == "update" && urlParams.get("target") != null){
@@ -96,5 +102,7 @@
 			}
 			
 		</script>
+		<button onclick="killPage();">Safely exit page</button>
+			
 	</body>
 </html>
