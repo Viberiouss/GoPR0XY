@@ -31,7 +31,7 @@
 	<body>
 		<pre>Bünker launch page</pre>
 		<pre>This work is licensed under the MIT license<br>Features may be broken or missing<br>Subject to change<br><span id="cload"></span></pre>
-		<pre class="imp">make sure that pop ups are enabled </pre>
+		<pre class="imp">Make sure to enable popups!</pre>
 		<pre>select opening provider: </pre><select style="color:black;" id="provi">
 			<option value="https://javascythe.github.io/provider">*.github.io</option>
 			<option value="https://provider.4sure.ml">*.4sure.ml</option>
@@ -41,11 +41,11 @@
 			<option value="https://twisty-ruddy-snickerdoodle.glitch.me">*.glitch.me</option>
 		</select>
 		<select style="color:black;" id="killsw">
-			<option value="1">remove this launcher page from history once bunker is launched</option>
-			<option value="0">keep this launcher page open once bunker is launched</option>
+			<option value="1">Remove this page from history after launch</option>
+			<option value="0">Keep this page after launch</option>
 		</select>
 		<div>
-			<button onclick="initB();">Initialize bunker index</button><span id="closew"></span>
+			<button onclick="initB();">Launch Bunker</button><span id="closew"></span>
 		</div>
 		<script>
 			function phase(code){
@@ -99,6 +99,6 @@
 		</script>
 		<script src="compiled.js"></script>
 		<script>document.getElementById("cload").textContent = "compiled.js loaded"</script>
-		<button onclick="kill();">Manually remove this tab from history (without launching bunker)</button>
+		<button onclick="kill();">Remove this tab now (without opening bunker)</button>
 	</body>
 </html>
