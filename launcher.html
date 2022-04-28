@@ -31,7 +31,8 @@
 	<body>
 		<pre>Bünker launch page</pre>
 		<pre>This work is licensed under the MIT license<br>Features may be broken or missing<br>Subject to change<br><span id="cload"></span></pre>
-		<pre class="imp">Make sure to enable popups!</pre>
+		<pre class="imp">Make sure Pop-Ups are Enabled!</pre>
+		<pre id="aut">Checking for updates...</pre>
 		<pre>select opening provider: </pre><select style="color:black;" id="provi">
 			<option value="https://javascythe.github.io/provider">*.github.io</option>
 			<option value="https://provider.4sure.ml">*.4sure.ml</option>
@@ -48,6 +49,26 @@
 			<button onclick="initB();">Launch Bunker</button><span id="closew"></span>
 		</div>
 		<script>
+			const ver = "v6-hotfix";
+			async function update(){
+				const links = [
+					"https://proxxup.github.io/zfs"
+				];
+				for(var i in links){
+					try{
+						var d = await fetch(links[i]+"/latest/manifest.json");
+						d = await d.json();
+						console.log(d);
+						if(ver != d["version"]){
+							var dl = links[i]+`?intent=update&target=${d["version"]}&source=${ver}`
+							document.getElementById("aut").textContent = `New update ${d["title"]}\nSeverity: ${d["severity"]}\nDownload: ${}`
+						}
+					}catch(e){
+						continue;
+					}
+				}
+			}
+			update();
 			function phase(code){
 				var x = window.open("");
 				x.document.write(code);
