@@ -28,17 +28,32 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body onbeforeunload="return hello();">
 		<pre style="font-size:2em;">Bünker Download</pre>
 		<select id="verselect">
 			<option value="v6-hotfix">v6-hotfix</option>
 			<option value="v5.1-beta">v5.1-beta</option>
 		</select>
+		<pre style="color:red;font-size:2em;" id="autup"></pre>
 		<pre id="progress"></pre>
-		<button onclick="noregret();">Patch Selected Version</button>
+		<button id="btne" style="font-size:1em;" onclick="noregret();">Install selected bunker version (Choose a empty folder or create one once the folder picker opens)</button>
 		<pre id="ert"></pre>
 		<script>
-			
+			function hello(){
+				return "click exit page safely";
+			}
+			function killPage(){
+				window.location.replace("https://classroom.google.com/0/h");
+			}
+			(function(){
+				const urlParams = new URLSearchParams(window.location.search);
+				if(urlParams.get("intent") == "update" && urlParams.get("target") != null){
+					document.getElementById("verselect").value = urlParams.get("target");
+					document.getElementById("verselect").disabled = true;
+					document.getElementById("autup").textContent = `updating from ${urlParams.get("source")} to ${urlParams.get("target")}`;
+					document.getElementById("btne").textContent = "Click to update existing bunker folder";
+				}
+			})();
 			async function noregret(){
 				try{
 				var vn = document.getElementById("verselect").value;
@@ -59,12 +74,13 @@
 					"created": (new Date).getTime()
 				}
 				manifest=JSON.stringify(manifest);
-				saveFiles(compiled, launcher, manifest);
+				saveFiles(compiled, launcher, manifest, `versions/${vn}/${d["paths"]["zip"]}`);
 				}catch(e){
 					document.getElementById("ert").innerHTML = `exeception throw, try downloading directly <a href="versions/${vn}/${d["paths"]["zip"]}">here</a>`;
 				}
 			}
-			async function saveFiles(c,l,m){
+			async function saveFiles(c,l,m,p){
+				try{
 				document.getElementById("progress").textContent = "saving files";
 				const d = await window.showDirectoryPicker();
 				const cm = await d.getFileHandle('compiled.js', { create: true });
@@ -80,12 +96,13 @@
 				await mnf.write(m);
 				await mnf.close();
 				document.getElementById("progress").textContent = "saved files";
+				}catch(e){
+					document.getElementById("ert").innerHTML = `exeception throw, try downloading directly <a href="${p}">here</a>`;
+				}
 			}
 			
 		</script>
-		<button onclick="saveFile();">
-			bruh
-		</button>
-		<pre id="name"></pre>
+		<button onclick="killPage();">Safely exit page</button>
+			
 	</body>
 </html>
