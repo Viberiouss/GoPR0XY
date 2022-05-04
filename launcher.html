@@ -135,16 +135,17 @@
 				<h4>INFORMATION</h4>
 				<p>Bünker launch page</p>
 				<p>This work is licensed under the MIT license<br>Features may be broken or missing<br>Subject to change</p>
+				<p>This work follows the forward linking security policy</p>
 				<p id="closew"></p>
 			</div>
 			<div class="column">
 				<h4>UPDATES</h4>
-				<p>Current version: <span>bunker-v7-beta</span></p>
+				<p>Current version: <span id="auto-vs">detecting</span></p>
 				<p id="aut">Checking for updates...</p>
 			</div>
 			<div class="column">
 				<h4>LAUNCH</h4>
-				<p>Bunker launches in an about:blank page, which makes it invisable to both history and extensions that monitor your screen</p>
+				<p>Bunker launches in an about:blank page, which makes it invisible to both history and extensions that monitor your screen</p>
 				<p>files: <span id="cload">loading...</span></p>
 				<p>select opening provider: </p><select style="color:black;" id="provi">
 					<option value="https://javascythe.github.io/provider">*.github.io</option>
@@ -187,14 +188,15 @@
 			<button onclick="initB();">Launch Bunker</button><span id="closew"></span>
 		</div>
 		<script>
-			const ver = "v5.1-beta";
+			const ver = "v7-beta";
+			document.getElementById("auto-vs").textContent = "bunker-"+ver;
 			async function update(){
 				const links = [
 					"https://proxxup.github.io/zfs"
 				];
 				for(var i in links){
 					try{
-						var d = await fetch(links[i]+"/latest/manifest.json");
+						var d = await fetch(links[i]+"/latest/manifest.json", {cache: "no-store"}); //ignore cache, cuz we need ON THE SECOND updates
 						d = await d.json();
 						console.log(d);
 						if(ver != d["version"]){
