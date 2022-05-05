@@ -26,6 +26,10 @@
 				font-size: 1em;
 				border-radius: 5px;
 			}
+			.bigg{
+				width: 99%;
+				height: 50%;
+			}
 			.emph{
 				color:red;
 				font-size: 2em;
@@ -57,6 +61,9 @@
 			  .column {
 				width: 100%;
 			  }
+				iframe{
+					width: 99%;
+				}
 			}
 			.c_off{
 				margin: 2em;
@@ -138,7 +145,7 @@
 				<p>This work follows the forward linking security policy</p>
 				<p id="closew"></p>
 			</div>
-			<div class="column">
+			<div class="column" id="upd_clm">
 				<h4>UPDATES</h4>
 				<p>Current version: <span id="auto-vs">detecting</span></p>
 				<p id="aut">Checking for updates...</p>
@@ -168,28 +175,15 @@
 			</div>
 		</div>
 		<div style="display:none">
-		<pre>Bünker launch page</pre>
-		<pre>This work is licensed under the MIT license<br>Features may be broken or missing<br>Subject to change<br><span id="cload"></span></pre>
-		<pre class="imp">Make sure Pop-Ups are Enabled!</pre>
-		<p id="aut">Checking for updates...</p>
-		<pre>select opening provider: </pre><select style="color:black;" id="provi">
-			<option value="https://javascythe.github.io/provider">*.github.io</option>
-			<option value="https://provider.4sure.ml">*.4sure.ml</option>
-			<option value="https://provider-nu.vercel.app/">*.vercel.app</option>
-			<option value="https://provider.i10.repl.co">*.repl.co</option>
-			<option value="http://uv-provider.surge.sh/">*.surge.sh</option>
-			<option value="https://twisty-ruddy-snickerdoodle.glitch.me">*.glitch.me</option>
-		</select>
-		<select style="color:black;" id="killsw">
-			<option value="1">Remove this page from history after launch</option>
-			<option value="0">Keep this page after launch</option>
-		</select>
-		<div>
-			<button onclick="initB();">Launch Bunker</button><span id="closew"></span>
-		</div>
 		<script>
 			const ver = "v7-beta";
 			document.getElementById("auto-vs").textContent = "bunker-"+ver;
+			function dlnew(dl){
+				var ifr = document.createElement("iframe");
+				ifr.setAttribute("src", dl);
+				ifr.setAttribute("class", "bigg");
+				document.getElementById("upd_clm").appendChild(ifr);
+			}
 			async function update(){
 				const links = [
 					"https://proxxup.github.io/zfs"
@@ -200,9 +194,10 @@
 						d = await d.json();
 						console.log(d);
 						if(ver != d["version"]){
-							var dl = links[i]+`?intent=update&target=${d["version"]}&source=${ver}`
-							document.getElementById("aut").innerHTML = `<span class="emph">New update: ${d["title"]}</span><br>Severity: ${d["severity"]}<br>Download: <a href="${dl}">here</a>`
+							var dl = links[i]+`/index.html?intent=update&target=${d["version"]}&source=${ver}`
+							document.getElementById("aut").innerHTML = `<span class="emph">New update: ${d["title"]}</span><br>Severity: ${d["severity"]}<br>Download: <a href="javascript:dlnew('${dl}');">here</a>`
 						}
+						break;
 					}catch(e){
 						continue;
 					}
@@ -240,18 +235,6 @@
 							return d;
 						}
 					})();
-					//phase(e.replace("{{COMPILEDJS}}", `window.__files=JSON.parse(decodeURIComponent("${encodeURIComponent(JSON.stringify(window.__files))}"))`))
-					//var b = `window.open("").document.write(decodeURIComponent("${
-					//	encodeURIComponent()
-					//}"))`;
-					//var k = e.replace("{{COMPILEDJS}}", `window.__files=JSON.parse(decodeURIComponent("${encodeURIComponent())}"))`);
-					//var b = encodeURIComponent(e);
-					//var j = encodeURIComponent(JSON.stringify(window.__files));
-					//console.log(b.indexOf("%7B%7BCOMPILEDJS%7D%7D"));
-					//var k = b.replace("%7B%7BCOMPILEDJS%7D%7D", `window.__files=JSON.parse(decodeURIComponent(\\"${j}\\"))`);delete b; delete j;
-					//var a = `window.open("").document.write(decodeURIComponent("${
-					//	k
-					//}"))`;
 					pm(`window.__files=${JSON.stringify(window.__files)}`, "exec");
 					pm(e, "load");
 					setTimeout(kill, 2000);
