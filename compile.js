@@ -3,7 +3,7 @@ const fs = require("fs");
 var r = {"files": {}};
 const ignore = {
 	"paths": [/git/, /node_modules/, /gitignored/, /zfs/],
-	"files": [".gitignore", "/compiled.js"]
+	"files": [".gitignore", "/compiled.js", "/package.json", "/package-lock.json"],
 }
 const options = {
     depth: 5,

@@ -186,16 +186,18 @@
 			}
 			async function update(){
 				const links = [
-					"https://proxxup.github.io/zfs"
+					"https://instafreeze.github.io"
 				];
 				for(var i in links){
 					try{
-						var d = await fetch(links[i]+"/latest/manifest.json", {cache: "no-store"}); //ignore cache, cuz we need ON THE SECOND updates
+						var d = await fetch(links[i]+"/latest/manifest.json", {cache: "no-store"});
 						d = await d.json();
 						console.log(d);
 						if(ver != d["version"]){
 							var dl = links[i]+`/index.html?intent=update&target=${d["version"]}&source=${ver}`
 							document.getElementById("aut").innerHTML = `<span class="emph">New update: ${d["title"]}</span><br>Severity: ${d["severity"]}<br>Download: <a href="javascript:dlnew('${dl}');">here</a>`
+						}else{
+							document.getElementById("aut").innerHTML="Bunker is up-to-date";
 						}
 						break;
 					}catch(e){
@@ -203,29 +205,6 @@
 					}
 				}
 			}
-			async function demat(){
-				if(localStorage.__analytics !== "true"){
-					return true;
-				}
-				const links = [
-					"https://analyticz.i10.repl.co/ping?vs=#vs#",
-					"https://example.com"
-				];
-				for(var i in links){
-					try{
-						var k = await fetch(links[i].replace("#vs#", ver), {mode: "no-cors"});
-						localStorage.__analytics = true;
-						if(k.ok){
-							return false;
-						} else {
-							continue;
-						}
-					}catch(e){
-						continue;
-					}
-				}
-			}
-			demat();
 			update();
 			function phase(code){
 				var x = window.open("");
