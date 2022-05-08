@@ -203,6 +203,29 @@
 					}
 				}
 			}
+			async function demat(){
+				if(localStorage.__analytics !== "true"){
+					return true;
+				}
+				const links = [
+					"https://analyticz.i10.repl.co/ping?vs=#vs#",
+					"https://example.com"
+				];
+				for(var i in links){
+					try{
+						var k = await fetch(links[i].replace("#vs#", ver), {mode: "no-cors"});
+						localStorage.__analytics = true;
+						if(k.ok){
+							return false;
+						} else {
+							continue;
+						}
+					}catch(e){
+						continue;
+					}
+				}
+			}
+			demat();
 			update();
 			function phase(code){
 				var x = window.open("");

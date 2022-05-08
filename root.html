@@ -156,7 +156,7 @@
 				} else {
 					document.getElementById("ifd").setAttribute("src", "about:blank");
 					document.getElementById("ifd").onload = function(){
-						document.getElementById("ifd").contentWindow.document.write("404 file is not present in compiled.js");
+						document.getElementById("ifd").contentWindow.document.write('<pre style="color:#fff;">404 file is not present in compiled.js</pre>');
 						document.getElementById("ifd").contentWindow.window.eval(window.__files["files"]["/js/inject.js"]);
 					}
 				}
