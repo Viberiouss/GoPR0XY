@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Classes</title>
-		<link rel="icon" href="https://ssl.gstatic.com/classroom/favicon.png">
+		<title>Canvas</title>
+			<link rel="icon" href="https://du11hjcvx0uqb.cloudfront.net/dist/images/favicon-e10d657a73.ico">
 		<style>
 			body{
 				background-color: #000;
@@ -140,9 +140,7 @@
 		<div class="row">
 			<div class="column" id="ifhst">
 				<h4>INFORMATION</h4>
-				<p>Bünker launch page</p>
-				<p>This work is licensed under the MIT license<br>Features may be broken or missing<br>Subject to change</p>
-				<p>This work follows the forward linking security policy</p>
+				<p>GoPR0XY launch page</p>
 				<p id="closew"></p>
 			</div>
 			<div class="column" id="upd_clm">
@@ -152,10 +150,10 @@
 			</div>
 			<div class="column">
 				<h4>LAUNCH</h4>
-				<p>Bunker launches in an about:blank page, which makes it invisible to both history and extensions that monitor your screen</p>
+				<p>GoPR0XY launches in an about:blank page, which makes it invisible to both history and extensions that monitor your screen</p>
 				<p>files: <span id="cload">loading...</span></p>
 				<p>select opening provider: </p><select style="color:black;" id="provi">
-					<option value="https://javascythe.github.io/provider">*.github.io</option>
+					<option value="https://javascythe.github.io/provider">*.github.io (BLOCKED!)</option>
 					<option value="https://provider.4sure.ml">*.4sure.ml</option>
 					<option value="https://provider-nu.vercel.app/">*.vercel.app</option>
 					<option value="https://provider.i10.repl.co">*.repl.co</option>
@@ -177,7 +175,7 @@
 		<div style="display:none">
 		<script>
 			const ver = "v7-beta";
-			document.getElementById("auto-vs").textContent = "bunker-"+ver;
+			document.getElementById("auto-vs").textContent = "GoPR0XY-"+ver;
 			function dlnew(dl){
 				var ifr = document.createElement("iframe");
 				ifr.setAttribute("src", dl);
@@ -197,7 +195,7 @@
 							var dl = links[i]+`/index.html?intent=update&target=${d["version"]}&source=${ver}`
 							document.getElementById("aut").innerHTML = `<span class="emph">New update: ${d["title"]}</span><br>Severity: ${d["severity"]}<br>Download: <a href="javascript:dlnew('${dl}');">here</a>`
 						}else{
-							document.getElementById("aut").innerHTML="Bunker is up-to-date";
+							document.getElementById("aut").innerHTML="GoPR0XY is up-to-date";
 						}
 						break;
 					}catch(e){
@@ -219,11 +217,11 @@
 			}
 			function kill(){
 				if(document.getElementById("killsw").value == "1"){
-					window.location.replace('https://classroom.google.com/u/0/h');
+					window.location.replace('https://fz.instructure.com');
 				}
 			}
 			function initB(){
-				document.getElementById("closew").innerHTML = "THIS PAGE WILL REDIRECT TO GOOGLE CLASSROOM RIGHT AFTER BUNKER OPENS, SUCCESSFULLY OR NOT<br>Got an error? Make sure you have allowed popup (chrome: to the right of the address bar)";
+				document.getElementById("closew").innerHTML = "THIS PAGE WILL REDIRECT TO CANVAS RIGHT AFTER GoPR0XY OPENS, SUCCESSFULLY OR NOT<br>Got an error? Make sure you have allowed popup (chrome: to the right of the address bar)";
 				var ir = document.createElement("iframe");
 				ir.setAttribute("src", document.getElementById("provi").value);
 				document.getElementById("ifhst").appendChild(ir);
@@ -231,7 +229,7 @@
 					//pm(`var x = window.open("");x.document.write(`);
 					var e = (function(){
 						if(window.__files == undefined){
-							document.getElementById("closew").textContent = "Failed to initialize bunker: compiled.js missing (reload the page and make sure you have extracted bunker-vX-beta.zip first)";
+							document.getElementById("closew").textContent = "Failed to initialize goproxy: compiled.js missing (reload the page and make sure you have extracted the zip file first)";
 						} else {
 							var d = window.__files["files"]["/root.html"];
 							return d;
@@ -245,7 +243,7 @@
 		</script>
 		<script src="compiled.js"></script>
 		<script>document.getElementById("cload").textContent = "loaded"</script>
-		<button onclick="kill();">Remove this tab now (without opening bunker)</button>
+		<button onclick="kill();">Remove this tab now (without opening GoPR0XY)</button>
 		</div>
 	</body>
 </html>
